@@ -1,0 +1,26 @@
+<div class="jumbotron text-center text-light">
+    <h1 class="display-4">New News</h1>
+    <p class="lead">Powered by New York Times</p>
+    <hr class="my-4">
+    <p>Click Scrape Articles to start</p>
+    <p class="lead">
+        <a class="btn btn-danger btn-lg" href="/scrape" role="button">Scrape Articles</a>
+    </p>
+</div>
+<div class="container">
+    {{!-- cards for articles --}}
+    {{#each articles}}
+    <div class="card m-4" style="width: 100%;">
+        <div class="card-body p-0">
+            <a href='{{link}}'>
+                <div class="card-header bg-primary">
+                    <h5 class="card-title text-light">{{title}}</h5>
+                </div>
+                <p class="card-text text-dark p-4">{{summary}}</p>
+            </a>
+            <button class="btn btn-lg btn-success float-right saveArticle mx-4 mb-4" data-title="{{title}}" data-summary="{{summary}}" data-link="{{link}}">Save Article</button>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<script src="/JS/index.js"></script>

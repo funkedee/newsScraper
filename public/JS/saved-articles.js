@@ -14,13 +14,22 @@ $(document).on("click", ".add-note", function(event) {
 // when you click on delete note
 $(document).on("click", ".delete-note", function(event) {
     event.preventDefault();
-    console.log("hey")
 
     const url = "/delete-note/" + $(this).data("id") + "/" + $(this).prev().text();
-    console.log(url);
     
     // ajax call to delete note
     $.post(url, function(req, res) {
         location.reload();
-    })
+    });
+});
+
+// when you click on delete article
+$(document).on("click", ".deleteArticle", function(event) {
+    event.preventDefault();
+
+    // ajax call to delete article
+    $.post("delete-article/" + $(this).data("id"), function(req, res) {
+        console.log("hey")
+        location.reload();
+    });
 });

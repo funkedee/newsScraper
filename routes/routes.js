@@ -86,9 +86,19 @@ module.exports = function (app) {
 
     // route to delete note
     app.post("/delete-note/:id/:note", function(req, res) {
-        console.log(req.params.index)
         db.Article.updateOne({_id: req.params.id}, {$pull: {notes: req.params.note}})
         .then(function(dbArticle) {
+            res.redirect("/saved-articles");
+        })
+        .catch(function(err) {
+            console.log(err)
+        });
+    });
+
+    // route to delete article from db
+    app.post("/delete-article/:id", function(req, res) {
+        db.Article.deleteOne({_id: req.params.id})
+        .then(function(dbArticle){
             res.redirect("/saved-articles");
         })
         .catch(function(err) {
